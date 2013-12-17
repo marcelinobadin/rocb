@@ -32,16 +32,13 @@ exports.createProduct = function(req, res) {
 
 exports.retrieveProduct = function(req, res) {
     var mongo = connectDB();
-    var outputHtml = "";
+    var outputHTML = {}
 
     mongo.collection('products').find().toArray(function (err, products) {
         if (err) throw res.send(err.toString());
 
-        for(var i = 0; i < products.length; i++) {
-            outputHtml += "<p>"+products[i]['name']+"</p>";
-        }
-
-        res.send(outputHtml);
+        outputHTML = {'products': products};
+        res.render('ad', outputHTML);
     });
 
 }

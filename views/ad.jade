@@ -1,0 +1,17 @@
+//
+   Created by marcelino.g.badin on 17/12/13.
+
+each val in products
+    table
+        tr
+            td(rowspan="3")
+                #productImage(style="width: 142px; height: 80px; background-image: url('/images/product.jpg'); background-repeat: no-repeat; background-position: center")
+                    button(type="button" onclick='buy()') BUY
+            td
+                th(style="text-align: left")= val.store
+        tr
+            td
+                th(style="text-align: left")= val.name
+        tr
+            td
+                th(style="text-align: right")= val.price
