@@ -39,6 +39,8 @@ exports.retrieveProduct = function(req, res) {
         if (err) throw res.send(err.toString());
 
         outputHTML = {'products': products};
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "X-Requested-With");
         res.render('ad', outputHTML);
     });
 
