@@ -13,7 +13,8 @@ function connectDB() {
 
     return mongodb.db(urlDB, {safe:false});
 }
-exports.createProduct = function(req, res) {
+
+exports.createProduct = function (req, res) {
     var mongo = connectDB();
     var document = {};
 
@@ -23,16 +24,16 @@ exports.createProduct = function(req, res) {
         url: req.param('url'),
         store: req.param('store'),
         price: req.param('price')
-    }
+    };
 
     mongo.collection('products').insert(document);
 
     res.send({status: 'ok'});
-}
+};
 
 exports.retrieveProduct = function(req, res) {
     var mongo = connectDB();
-    var outputHTML = {}
+    var outputHTML = {};
 
     mongo.collection('products').find().toArray(function (err, products) {
         if (err) throw res.send(err.toString());
@@ -41,12 +42,12 @@ exports.retrieveProduct = function(req, res) {
         res.render('ad', outputHTML);
     });
 
-}
+};
 
 exports.updateProduct = function(req, res) {
 
-}
+};
 
 exports.deleteProduct = function(req, res) {
 
-}
+};

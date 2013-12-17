@@ -6,7 +6,7 @@ each val in products
         tr
             td(rowspan="3")
                 #productImage(style="width: 142px; height: 80px; background-image: url('/images/product.jpg'); background-repeat: no-repeat; background-position: center")
-                    button(type="button" onclick='buy()') BUY
+                    button(type="button" onclick="/javascripts/buy("+ val._id + ")") BUY
             td
                 th(style="text-align: left")= val.store
         tr
