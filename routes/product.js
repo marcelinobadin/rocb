@@ -16,9 +16,13 @@ function connectDB() {
 
 exports.createProduct = function (req, res) {
     var mongo = connectDB();
-    var document = {};
+    var productMeta = {};
+    var image = req.files.image;
 
-    document = {
+    //TODO resize images before store in the database (width 160, height 90)
+    //TODO store all the information needed by a Product Centric vision
+
+    productMeta = {
 
         name: req.param('name'),
         url: req.param('url'),
@@ -26,9 +30,11 @@ exports.createProduct = function (req, res) {
         price: req.param('price')
     };
 
-    mongo.collection('products').insert(document);
+    //mongo.collection('products').insert(productMeta);
 
-    res.send({status: 'ok'});
+    //res.send(productMeta);
+    console.log(image);
+
 };
 
 exports.retrieveProduct = function(req, res) {
